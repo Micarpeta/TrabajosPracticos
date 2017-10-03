@@ -1,0 +1,3 @@
+Todo el código tiene complejidad computacional Q(1)
+
+Metricas en LOOM
