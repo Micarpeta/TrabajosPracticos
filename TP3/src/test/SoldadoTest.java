@@ -10,13 +10,21 @@ import infanteria.Puñal;
 import infanteria.Soldado;
 import infanteria.Unidad;
 
+/**
+ * 
+ * Test de la clase Soldado
+ *
+ */
 public class SoldadoTest {
 	
 	/*
 	 * Test soldado ataca a otras unidades
 	 */
 	
-	@Test //Se testea que un soldado inflija 10 puntos de daño a otra unidad
+	/**
+	 * Se testea que un soldado inflija 10 puntos de daño a otra unidad
+	 */
+	@Test 
 	public void soldadoAtacaCon10() {
 		Unidad soldado = new Soldado();
 		Unidad objetivo = new Soldado();
@@ -25,7 +33,10 @@ public class SoldadoTest {
 		Assert.assertEquals(190, objetivo.getSalud());
 	}
 	
-	@Test //Se testea que un soldado con puñal inflija 13 puntos de daño a otra unidad
+	/**
+	 * Se testea que un soldado con puñal inflija 13 puntos de daño a otra unidad
+	 */
+	@Test 
 	public void soldadoAtacaCon13() {
 		Unidad soldado = new Puñal(new Soldado());
 		Unidad objetivo = new Arquero();
@@ -34,7 +45,10 @@ public class SoldadoTest {
 		Assert.assertEquals(37, objetivo.getSalud());
 	}
 	
-	@Test //Se testea que un soldado inflija 13 puntos de daño a otra unidad con puñal
+	/**
+	 * Se testea que un soldado inflija 13 puntos de daño a otra unidad con puñal
+	 */
+	@Test
 	public void soldadoAtacaCon13bis() {
 		Unidad soldado = new Soldado();
 		Unidad objetivo = new Puñal(new Lancero());
@@ -43,7 +57,10 @@ public class SoldadoTest {
 		Assert.assertEquals(137, objetivo.getSalud());
 	}
 	
-	@Test //Se testea que un soldado con puñal inflija 16 puntos de daño a otra unidad
+	/**
+	 * Se testea que un soldado con puñal inflija 16 puntos de daño a otra unidad
+	 */
+	@Test 
 	public void soldadoAtacaCon16() {
 		Unidad soldado = new Puñal(new Soldado());
 		Unidad objetivo = new Puñal(new Caballero());

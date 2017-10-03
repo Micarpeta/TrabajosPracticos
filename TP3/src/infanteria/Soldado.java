@@ -1,5 +1,13 @@
 package infanteria;
 
+/**
+ * Clase concreta Soldado
+ * 
+ * Atributos: energia
+ * 
+ *
+ */
+
 public class Soldado extends Unidad {
 
 	/**

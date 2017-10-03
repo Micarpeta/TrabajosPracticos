@@ -1,5 +1,10 @@
 package infanteria;
 
+/**
+ * 
+ * Clase abstracta ItemDecorator
+ *
+ */
 public abstract class ItemDecorator extends Unidad{
 	
 	protected Unidad unidad;
