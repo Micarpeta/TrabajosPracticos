@@ -17,4 +17,12 @@ public class Capa extends ItemDecorator{
 			return (int)(unidad.getPuntosDaño()*0.9);
 		return unidad.getPuntosDaño();
 	}
+	
+	
+//	public int getEnergia() {
+//		if(unidad instanceof Soldado)
+//			return ((Soldado) unidad).getEnergia();
+//		return 0;
+//	}
+
 }

@@ -71,4 +71,6 @@ public abstract class Unidad {
 	protected int getPuntosDaño() {
 		return this.puntosDaño;
 	}
+	
+	
 }
