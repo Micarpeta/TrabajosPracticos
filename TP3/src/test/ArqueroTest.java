@@ -31,8 +31,8 @@ public class ArqueroTest {
 	 * ADICIÓN DE ITEMS:
 	 * 
 	 * PUÑAL:
-	 * Puntos de daño = 8
-	 * Recibir ataque = -3 - ataque del enemigo
+	 * Puntos de daño = +3
+	 * Recibir ataque = ataque del enemigo +3
 	 * 
 	 * CAPA:
 	 * No tiene efecto sobre esta unidad. 
@@ -48,8 +48,10 @@ public class ArqueroTest {
 	}
 
 	/** ATAQUE SIN ITEMS */
+	
+	/** Se testea que un arquero ataque con 5 a otra unidad*/
 	@Test
-	public void queAtaqueCon5() { /** Se testea que un arquero ataque con 5 a otra unidad*/
+	public void queAtaqueCon5() { 
 		Unidad objetivo = new Caballero();
 		Assert.assertEquals(200,objetivo.getSalud());
 		arquero.atacar(objetivo, 2);
@@ -57,8 +59,9 @@ public class ArqueroTest {
 	}
 	
 	/** ATAQUE CON PUÑAL */ 
+	/** Se testea que ataque con 8 a otra unidad */
 	@Test
-	public void queAtaqueCon8() { /** Se testea que ataque con 8 a otra unidad */
+	public void queAtaqueCon8() { 
 		Unidad objetivo = new Soldado();
 		Assert.assertEquals(200,objetivo.getSalud());
 		arquero = new Puñal(arquero);
@@ -67,9 +70,9 @@ public class ArqueroTest {
 	}
 	
 	/** ATAQUE CON CAPA */
-	
+	/** Se testea que la capa no tenga efecto */
 	@Test
-	public void queNoReduzcaAtaque() {/** Se testea que la capa no tenga efecto */
+	public void queNoReduzcaAtaque() {
 		Unidad objetivo = new Soldado();
 		Assert.assertEquals(200,objetivo.getSalud());
 		arquero = new Capa(arquero);
@@ -78,9 +81,9 @@ public class ArqueroTest {
 	}
 	
 	/** ATAQUE CON ESCUDO */ 
-	
+	/** Se testea que solo reciba el 40% del ataque */
 	@Test
-	public void quePierda10DeSalud() { /** Se testea que solo reciba el 40% del ataque */
+	public void quePierda10DeSalud() {
 		Unidad enemigo = new Lancero();
 		Assert.assertEquals(50, arquero.getSalud());
 		arquero = new Escudo(arquero);
@@ -91,17 +94,18 @@ public class ArqueroTest {
 	}
 	
 	/** DISTANCIA */ 
-	
+	/** Se testea que en una distancia menor a la mínima no ataque */
 	@Test
-	public void queNoAtaque() /** Se testea que en una distancia menor a la mínima no ataque */
-	{
+	public void queNoAtaque(){
 		Unidad objetivo = new Soldado();
 		Assert.assertEquals(200,objetivo.getSalud());
 		arquero.atacar(objetivo, 1);
 		Assert.assertEquals(200,objetivo.getSalud());
 	}
 	
-	public void queNoAtaque2() { /** Se testea que en una distancia mayor a la máxima no ataque */
+	/** Se testea que en una distancia mayor a la máxima no ataque */
+	@Test
+	public void queNoAtaque2() {
 		Unidad objetivo = new Soldado();
 		Assert.assertEquals(200,objetivo.getSalud());
 		arquero.atacar(objetivo, 7);
@@ -109,6 +113,9 @@ public class ArqueroTest {
 	}
 	
 	/** FLECHAS */
+	/**
+	 * Se testea que recargue el carcaj recibiento un paquete de 6 flechas
+	 */
 	@Test
 	public void queCargueFlechas() {
 		Arquero arq = new Arquero();
@@ -121,6 +128,9 @@ public class ArqueroTest {
 		Assert.assertEquals(6,arq.getCantFlechas());
 	}
 
+	/**
+	 * Se testea que el arquero no ataque si no posee flechas
+	 */
 	@Test
 	public void queNoAtaqueSinFlechas() {
 		Unidad obj = new Soldado();

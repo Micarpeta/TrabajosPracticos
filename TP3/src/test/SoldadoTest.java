@@ -13,6 +13,11 @@ import infanteria.Puñal;
 import infanteria.Soldado;
 import infanteria.Unidad;
 
+/**
+ * 
+ * Test de la clase Soldado
+ *
+ */
 public class SoldadoTest {
 	
 	private Unidad soldado;
@@ -24,15 +29,15 @@ public class SoldadoTest {
 	 * Salud = 200
 	 * Energía = 100
 	 * Puntos de daño = 10
-	 * Recibir ataque = -10 puntos de salud
+	 * Distancia de Ataque entre 0 y 1
 	 * 
 	 * Restaurarán energía al beber una poción de agua.
 	 * 
 	 * ADICIÓN DE ITEMS:
 	 * 
 	 * PUÑAL:
-	 * Puntos de daño = 13
-	 * Recibir ataque = -13 puntos de salud
+	 * Puntos de daño = +3
+	 * Recibir ataque = ataque del objetivo + 3
 	 * 
 	 * CAPA:
 	 * Energía = La duplica
@@ -43,6 +48,7 @@ public class SoldadoTest {
 	 * 
 	 */
 	
+
 	@Before
 	public void inicializarSoldado() {
 		soldado = new Soldado();
@@ -50,15 +56,19 @@ public class SoldadoTest {
 	
 	/** ATAQUE SIN ITEMS ENTRE SOLDADO Y OBJETIVO*/
 	
-	@Test /**Se testea que un soldado inflija 10 puntos de daño a otro Soldado*/
-	public void soldadoAtacaCon10aSoldado() {
+	/**
+	 * Se testea que un soldado inflija 10 puntos de daño a otra unidad
+	 */
+	@Test 
+	public void soldadoAtacaCon10() {
 		Unidad objetivo = new Soldado();
 		Assert.assertEquals(200,objetivo.getSalud());
 		soldado.atacar(objetivo, 0);
 		Assert.assertEquals(190, objetivo.getSalud());
 	}
 	
-	@Test /**Se testea que un soldado inflija 10 puntos de daño a un Arquero*/
+	/**Se testea que un soldado inflija 10 puntos de daño a un Arquero*/
+	@Test 
 	public void soldadoAtacaCon10aArquero() {
 		Unidad objetivo = new Arquero();
 		Assert.assertEquals(50,objetivo.getSalud());
@@ -66,7 +76,8 @@ public class SoldadoTest {
 		Assert.assertEquals(40, objetivo.getSalud());
 	}
 	
-	@Test /**Se testea que un soldado inflinja 10 puntos de daño a un Lancero*/
+	 /**Se testea que un soldado inflinja 10 puntos de daño a un Lancero*/
+	@Test
 	public void soldadoAtacaCon10aLancero() {
 		Unidad objetivo = new Lancero();
 		Assert.assertEquals(150,objetivo.getSalud());
@@ -74,7 +85,8 @@ public class SoldadoTest {
 		Assert.assertEquals(140, objetivo.getSalud());
 	}
 	
-	@Test /**Se testea que un soldado inflinja 10 puntos de daño a un Caballero*/
+	/**Se testea que un soldado inflinja 10 puntos de daño a un Caballero*/
+	@Test 
 	public void soldadoAtacaCon10aCaballero() {
 		Unidad objetivo = new Caballero();
 		Assert.assertEquals(200,objetivo.getSalud());
@@ -84,7 +96,8 @@ public class SoldadoTest {
 	
 	/** ATAQUE ENTRE SOLDADO CON PUÑAL Y OBJETIVO SIN ITEMS */
 	
-	@Test /**Se testea que un soldado con puñal inflija 13 puntos de daño a Soldado*/
+	/**Se testea que un soldado con puñal inflija 13 puntos de daño a Soldado*/
+	@Test 
 	public void soldadoAtacaCon13aSoldado() {
 		soldado = new Puñal(soldado);
 		Unidad objetivo = new Soldado();
@@ -93,7 +106,8 @@ public class SoldadoTest {
 		Assert.assertEquals(187, objetivo.getSalud());
 	}
 	
-	@Test /**Se testea que un soldado con puñal inflija 13 puntos de daño a Arquero*/
+	/**Se testea que un soldado con puñal inflija 13 puntos de daño a Arquero*/
+	@Test 
 	public void soldadoAtacaCon13aArquero() {
 		soldado = new Puñal(soldado);
 		Unidad objetivo = new Arquero();
@@ -101,8 +115,9 @@ public class SoldadoTest {
 		soldado.atacar(objetivo, 0);
 		Assert.assertEquals(37, objetivo.getSalud());
 	}
-	
-	@Test /**Se testea que un soldado con puñal inflija 13 puntos de daño a Lancero*/
+
+	/**Se testea que un soldado con puñal inflija 13 puntos de daño a Lancero*/
+	@Test 
 	public void soldadoAtacaCon13aLancero() {
 		soldado = new Puñal(soldado);
 		Unidad objetivo = new Lancero();
@@ -111,7 +126,8 @@ public class SoldadoTest {
 		Assert.assertEquals(137, objetivo.getSalud());
 	}
 	
-	@Test /**Se testea que un soldado con puñal inflija 13 puntos de daño a Caballero*/
+	 /**Se testea que un soldado con puñal inflija 13 puntos de daño a Caballero*/
+	@Test
 	public void soldadoAtacaCon13aCaballero() {
 		soldado = new Puñal(soldado);
 		Unidad objetivo = new Caballero();
@@ -122,7 +138,8 @@ public class SoldadoTest {
 
 	/** ATAQUE ENTRE SOLDADO CON PUÑAL Y OBJETIVO CON PUÑAL */
 	
-	@Test /**Se testea que un soldado con puñal inflija 16 puntos de daño a Soldado con puñal*/
+	/**Se testea que un soldado con puñal inflija 16 puntos de daño a Soldado con puñal*/
+	@Test 
 	public void soldadoAtacaCon16aSoldado() {
 		soldado = new Puñal(soldado);
 		Unidad objetivo = new Puñal(new Soldado());
@@ -131,7 +148,8 @@ public class SoldadoTest {
 		Assert.assertEquals(184, objetivo.getSalud());
 	}
 	
-	@Test /**Se testea que un soldado con puñal inflija 16 puntos de daño a Arquero con puñal*/
+	/**Se testea que un soldado con puñal inflija 16 puntos de daño a Arquero con puñal*/
+	@Test 
 	public void soldadoAtacaCon16aArquero() {
 		soldado = new Puñal(soldado);
 		Unidad objetivo = new Puñal(new Arquero());
@@ -140,7 +158,8 @@ public class SoldadoTest {
 		Assert.assertEquals(34, objetivo.getSalud());
 	}
 	
-	@Test /**Se testea que un soldado con puñal inflija 16 puntos de daño a Lancero con puñal*/
+	 /**Se testea que un soldado con puñal inflija 16 puntos de daño a Lancero con puñal*/
+	@Test
 	public void soldadoAtacaCon16aLancero() {
 		soldado = new Puñal(soldado);
 		Unidad objetivo = new Puñal(new Lancero());
@@ -160,17 +179,19 @@ public class SoldadoTest {
 	
 	/** SOLDADO CON CAPA*/
 	
+	/** Se testea que la capa duplique la energia del soldado*/ 
 	@Test
-	public void queDupliqueLaEnergia() { /** REVISAR GET ENERGIA */ 
+	public void queDupliqueLaEnergia() { 
 		Assert.assertEquals(100,((Soldado)soldado).getEnergia());
 		soldado = new Capa(soldado);	
-		//Assert.assertEquals(200,soldado.getEnergia());
+		Assert.assertEquals(200,((Capa)soldado).getEnergia());
 	}
 	
+	 /** Se testea que al tener una capa se reduzca el ataque en un 10% */
 	@Test
-	public void queAtaqueCon9() { /** Se testea que al tener una capa se reduzca el ataque en un 10% */
-		Unidad objetivo = new Arquero();
+	public void queAtaqueCon9() {
 		soldado = new Capa(soldado);
+		Unidad objetivo = new Arquero();
 		Assert.assertEquals(50,objetivo.getSalud());
 		soldado.atacar(objetivo,1);
 		Assert.assertEquals(41,objetivo.getSalud());
@@ -178,8 +199,9 @@ public class SoldadoTest {
 	
 	/** ATAQUE DE SOLDADO CON ESCUDO*/
 	
+	/** Se testea que al tener un escudo, solo reciba el 40% del daño del enemigo */
 	@Test
-	public void queDisminuyaEn20LaSalud() { /** Se testea que al tener un escudo, solo reciba el 40% del daño del enemigo */
+	public void queDisminuyaEn20LaSalud() { 
 		Unidad enemigo = new Caballero();
 		Assert.assertEquals(200,soldado.getSalud());
 		soldado = new Escudo(soldado);
@@ -188,12 +210,10 @@ public class SoldadoTest {
 		
 	}
 	
-
-	
 	/** BEBER AGUA */
-	
+	/** Se testea que al tomar agua aumente su energía a 100 */
 	@Test
-	public void queAumenteLaEnergia() { /** Se testea que al tomar agua aumente su energía a 100 */
+	public void queAumenteLaEnergia() { 
 		Soldado soldier = new Soldado();
 		Unidad objetivo = new Caballero();
 		soldier.atacar(objetivo,1);
@@ -206,8 +226,9 @@ public class SoldadoTest {
 	
 	/** SOLDADO SIN ENERGIA */
 	
+	/** Se testea que si el soldado no tiene la energía suficiente, que no pueda atacar */
 	@Test
-	public void queNoAtaqueSinEnergia() { /** Se testea que si el soldado no tiene la energía suficiente, que no pueda atacar */
+	public void queNoAtaqueSinEnergia() { 
 		Unidad objetivo = new Lancero();
 		for(int i=0;i<10;i++)
 			soldado.atacar(objetivo, 1);
@@ -215,6 +236,5 @@ public class SoldadoTest {
 		soldado.atacar(objetivo,1);
 		Assert.assertEquals(50,objetivo.getSalud());
 	}
-	
 	
 }

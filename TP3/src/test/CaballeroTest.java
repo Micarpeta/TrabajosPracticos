@@ -4,7 +4,6 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import infanteria.Arquero;
 import infanteria.Caballero;
 import infanteria.Capa;
 import infanteria.Escudo;
@@ -30,8 +29,8 @@ public class CaballeroTest {
 	 * ADICIÓN DE ITEMS:
 	 * 
 	 * PUÑAL:
-	 * Puntos de daño = 8
-	 * Recibir ataque = -3 - ataque del enemigo
+	 * Puntos de daño = +3
+	 * Recibir ataque = ataque del enemigo +3
 	 * 
 	 * CAPA:
 	 * No tiene efecto sobre esta unidad. 
@@ -47,17 +46,19 @@ public class CaballeroTest {
 	}
 
 	/** ATAQUE SIN ITEMS */
+	/** Se testea que un caballero ataque con 50 a otra unidad*/
 	@Test
-	public void queAtaqueCon50() { /** Se testea que un caballero ataque con 50 a otra unidad*/
+	public void queAtaqueCon50() { 
 		Unidad objetivo = new Caballero();
 		Assert.assertEquals(200,objetivo.getSalud());
 		caballero.atacar(objetivo, 2);
 		Assert.assertEquals(150,objetivo.getSalud());
 	}
 	
-	/** ATAQUE CON PUÑAL */ 
+	/** ATAQUE CON PUÑAL */
+	/** Se testea que ataque con 53 a otra unidad */
 	@Test
-	public void queAtaqueCon53() { /** Se testea que ataque con 53 a otra unidad */
+	public void queAtaqueCon53() { 
 		Unidad objetivo = new Soldado();
 		Assert.assertEquals(200,objetivo.getSalud());
 		caballero = new Puñal(caballero);
@@ -66,9 +67,9 @@ public class CaballeroTest {
 	}
 	
 	/** ATAQUE CON CAPA */
-	
+	/** Se testea que la capa no tenga efecto */
 	@Test
-	public void queNoReduzcaAtaque() {/** Se testea que la capa no tenga efecto */
+	public void queNoReduzcaAtaque() {
 		Unidad objetivo = new Soldado();
 		Assert.assertEquals(200,objetivo.getSalud());
 		caballero = new Capa(caballero);
@@ -77,9 +78,9 @@ public class CaballeroTest {
 	}
 	
 	/** ATAQUE CON ESCUDO */ 
-	
+	/** Se testea que solo reciba el 40% del ataque */
 	@Test
-	public void quePierda10DeSalud() { /** Se testea que solo reciba el 40% del ataque */
+	public void quePierda10DeSalud() { 
 		Unidad enemigo = new Lancero();
 		Assert.assertEquals(200, caballero.getSalud());
 		caballero = new Escudo(caballero);
@@ -90,17 +91,18 @@ public class CaballeroTest {
 	}
 	
 	/** DISTANCIA */ 
-	
+	/** Se testea que en una distancia menor a la mínima no ataque */
 	@Test
-	public void queNoAtaque() /** Se testea que en una distancia menor a la mínima no ataque */
-	{
+	public void queNoAtaque() {
 		Unidad objetivo = new Soldado();
 		Assert.assertEquals(200,objetivo.getSalud());
 		caballero.atacar(objetivo, 0);
 		Assert.assertEquals(200,objetivo.getSalud());
 	}
 	
-	public void queNoAtaque2() { /** Se testea que en una distancia mayor a la máxima no ataque */
+	/** Se testea que en una distancia mayor a la máxima no ataque */
+	@Test
+	public void queNoAtaque2() { 
 		Unidad objetivo = new Soldado();
 		Assert.assertEquals(200,objetivo.getSalud());
 		caballero.atacar(objetivo, 3);
@@ -108,8 +110,9 @@ public class CaballeroTest {
 	}
 	
 	/** CABALLO REBELDE */
+	/** Se testea que luego de 3 ataques el caballo se ponga rebelde, y no pueda atacar */
 	@Test
-	public void queNoAtaqueConCaballoRebelde() { /** Se testea que luego de 3 ataques el caballo se ponga rebelde, y no pueda atacar */
+	public void queNoAtaqueConCaballoRebelde() { 
 		Caballero cab= new Caballero();
 		Unidad obj = new Soldado();
 		for(int i =0; i<3;i++)
@@ -119,8 +122,9 @@ public class CaballeroTest {
 		Assert.assertEquals(200,obj.getSalud());
 	}
 
+	/** Se testea que luego de estar el caballo rebelde, tomando agua pueda volver a atacar */
 	@Test
-	public void queTomeAguaYAtaque() { /** Se testea que luego de estar el caballo rebelde, tomando agua pueda volver a atacar */
+	public void queTomeAguaYAtaque() { 
 		Unidad obj = new Soldado();
 		Caballero cab= new Caballero();
 		for(int i =0; i<3;i++)

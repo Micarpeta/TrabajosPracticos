@@ -1,5 +1,13 @@
 package infanteria;
 
+/**
+ * Clase concreta Soldado
+ * 
+ * Atributos: energia
+ * 
+ *
+ */
+
 public class Soldado extends Unidad {
 
 	/**
@@ -38,6 +46,7 @@ public class Soldado extends Unidad {
 	 * Obtiene la energía
 	 * @return energía
 	 */
+//	@Override
 	public int getEnergia() {
 		return energia;
 	}

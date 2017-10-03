@@ -1,7 +1,16 @@
 package infanteria;
-
+/**
+ * 
+ * Clase concreta Capa hereda de ItemDecorator
+ *
+ */
 public class Capa extends ItemDecorator{
 	
+	/**
+	 * Constructor
+	 * Si la unidad es un soldado, le setea el doble de energìa
+	 * @param unidad
+	 */
 	public Capa(Unidad unidad) {
 		
 		super(unidad);
@@ -11,6 +20,9 @@ public class Capa extends ItemDecorator{
 	}	
 	
 	//ATAQUE
+	/**
+	 * Si la unidad es un soldado retorna el 90% del daño
+	 */
 	@Override
 	public int getPuntosDaño() {
 		if(unidad instanceof Soldado)
@@ -18,11 +30,13 @@ public class Capa extends ItemDecorator{
 		return unidad.getPuntosDaño();
 	}
 	
-	
-//	public int getEnergia() {
-//		if(unidad instanceof Soldado)
-//			return ((Soldado) unidad).getEnergia();
-//		return 0;
-//	}
-
+	/**
+	 * Si la unidad es un soldado
+	 * @return soldado.energia sino retorna 0
+	 */
+	public int getEnergia() {
+		if(unidad instanceof Soldado)
+			return ((Soldado)unidad).getEnergia();
+		return 0;
+	}
 }

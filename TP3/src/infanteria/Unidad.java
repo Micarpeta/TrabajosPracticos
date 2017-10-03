@@ -4,7 +4,6 @@ package infanteria;
  * 
  * Atributos: salud, distanciaMin, distanciaMax, puntosDaño
  * 
- *
  */
 public abstract class Unidad {
 	
@@ -43,10 +42,10 @@ public abstract class Unidad {
 	}
 
 	/**
-	 * Método boolean que devuelve si puede o no atacar.
+	 * Método puedeAtacar.
 	 * @param obj
 	 * @param distancia
-	 * @return
+	 * @return si puede atacar evaluando las condiciones
 	 */
 	protected boolean puedeAtacar(Unidad obj, int distancia) {
 		if(this.salud<=0 || obj.getSalud()<=0)
@@ -58,7 +57,7 @@ public abstract class Unidad {
 	
 	/**
 	 * Retorna la salud de la unidad.
-	 * @return
+	 * @return salud
 	 */
 	public int getSalud() {
 		return salud;
@@ -66,11 +65,10 @@ public abstract class Unidad {
 	
 	/**
 	 * Retorna los puntos de daño de la unidad.
-	 * @return
+	 * @return puntosDaño
 	 */
 	protected int getPuntosDaño() {
 		return this.puntosDaño;
 	}
-	
 	
 }
