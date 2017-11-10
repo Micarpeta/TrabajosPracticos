@@ -15,8 +15,10 @@ public class ProbadorGrafos extends Archivos {
 	
 	public ProbadorGrafos(String in, String out) {
 		super(new File(in), new File(out));
-		FileReader archEnt = null, archSal = null;
-		BufferedReader lectorEnt = null, lectorSal;
+		FileReader archEnt = null;
+		FileReader archSal = null;
+		BufferedReader lectorEnt = null;
+		BufferedReader lectorSal;
 		try {
 			archEnt = new FileReader(entrada);
 			archSal = new FileReader(salida);

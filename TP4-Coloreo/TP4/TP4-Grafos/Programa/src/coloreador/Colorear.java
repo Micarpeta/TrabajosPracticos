@@ -50,7 +50,8 @@ public class Colorear {
 
 	public int darColor(int modo) {
 		modo = (modo < 0 || modo > 2)? 0 : modo;
-		int colorMejorCaso, cantNodos = grafo.getCantNodos();
+		int colorMejorCaso;
+		int cantNodos = grafo.getCantNodos();
 		Nodo [] nodos = new Nodo[cantNodos];
 		Integer [] nodosDeEsteColor = new Integer[cantNodos];
 		for(int i = 0; i < cantNodos; i++) {
