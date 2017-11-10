@@ -23,7 +23,7 @@ public class GeneradorNPartitos {
 				g.setArista(i, j);
 	}
 
-	public void imprimir(String path) {
+	public void procesarSalida(String path) {
 		FileWriter fw;
 		PrintWriter pw = null;
 		orden = g.getCantNodos();

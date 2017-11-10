@@ -16,6 +16,7 @@ public class GeneradorRegularGrado {
 			System.out.println("No se puede generar el grafo con estos parametros");
 			return;
 		}
+		int aristasPorNodo[] = new int[nodos];
 		grafo = new GrafoNDNP(nodos);
 		orden = grafo.getCantNodos();
 		for(int i = 0; i < nodos; i++) {
@@ -25,9 +26,11 @@ public class GeneradorRegularGrado {
 			}
 			
 			while(aristasRestantes > 0) { //MIENTRAS HAYA ARISTAS POR AGREGARLE AL NODO
-				int test = this.randomEntre(i + 1, orden); //BUSCAMOS UN NODO MAYOR AL ACTUAL
-				if(!grafo.getArista(i, test)) {
-					grafo.setArista(i, test); //SI NO TIENE ARISTA, SE LA SETEAMOS
+				int random = this.randomEntre(0 , orden); //BUSCAMOS UN NODO MAYOR AL ACTUAL
+				if(!grafo.getArista(i, random) && (i != random) && (aristasPorNodo[i] < grado) && (aristasPorNodo[random]<grado)) {
+					grafo.setArista(i, random); //SI NO TIENE ARISTA, SE LA SETEAMOS
+					aristasPorNodo[i]++;
+					aristasPorNodo[random]++;
 					aristasRestantes--;
 				}
 			}
