@@ -1,13 +1,14 @@
 package generadores;
 
 import grafo.GrafoNDNP;
-import java.io.*;
 
-public class GeneradorRegularAdy {
-	private GrafoNDNP grafo;
-	private int orden;
-	
-	// Generador de grafos regulares dados N y el porcentaje de adyacencia.
+
+public class GeneradorRegularAdy extends Generador {	
+	/**
+	 * Generador de Grafo Regular dado el porcentaje de adyacencia.
+	 * @param nodos
+	 * @param porcentaje de adyacencia
+	 */
 	public GeneradorRegularAdy(int nodos, double porcentaje){
 		grafo = new GrafoNDNP(nodos);
 		orden = nodos;
@@ -30,30 +31,6 @@ public class GeneradorRegularAdy {
 				if (test == 0)
 					minimoGrado++;
 			}
-		}
-	}
-
-	public void procesarSalida(String path) {
-		
-		int aristas = grafo.cantidadAristas(), minG = grafo.getGradoDeUnNodo(0), maxG = grafo.getGradoDeUnNodo(0);
-		double perc = (double) grafo.cantidadAristas() * 100/grafo.getMaxAristas();
-		for(int i = 1; i < orden; i++) {
-			int aux = grafo.getGradoDeUnNodo(i);
-			if(aux < minG)
-				minG = aux;
-			if(aux > maxG)
-				maxG = aux;
-		}
-		try {
-			PrintWriter pw = new PrintWriter(new File(path));
-			pw.println(orden + " " + aristas + " " + perc + " " + maxG + " " + minG);
-			for(int i = 0; i < orden; i++)
-				for(int j = i + 1; j < orden; j++)
-					if (grafo.getArista(i, j))
-						pw.println(i + " " + j);
-			pw.close();
-		} catch (Exception e) {
-			e.printStackTrace();
 		}
 	}
 }

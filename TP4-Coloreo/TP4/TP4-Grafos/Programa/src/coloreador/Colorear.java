@@ -128,8 +128,8 @@ public class Colorear {
 
 	public void escribirArchivo() {
 		grabar("coloreadoSecuencialAleatorio.out", colorMejorCasoSA, ordenMejorCasoSA);
-		grabar("coloreadoMatula.out", colorMejorCasoMa, ordenMejorCasoMa);
-		grabar("coloreadoWelsh-Powell.out", colorMejorCasoWP, ordenMejorCasoWP);
+//		grabar("coloreadoMatula.out", colorMejorCasoMa, ordenMejorCasoMa);
+//		grabar("coloreadoWelsh-Powell.out", colorMejorCasoWP, ordenMejorCasoWP);
 	}
 	
 	public void grabar(String path, int colorMejor, Nodo[] ordenMejor){

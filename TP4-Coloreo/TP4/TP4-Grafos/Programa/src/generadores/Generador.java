@@ -1,29 +1,21 @@
 package generadores;
 
+import java.io.File;
+import java.io.PrintWriter;
+
 import grafo.GrafoNDNP;
 
-import java.io.*;
-
-public class GeneradorProbabilidad {
-	private GrafoNDNP grafo;
-	private int orden;
-
-	//GENERAMOS EL GRAFO RECIBIENDO LA PROBABILIDAD Y LA CANTIDAD DE NODOS
-	public GeneradorProbabilidad(int n, double probabilidad) {
-		grafo = new GrafoNDNP(n);
-		for(int i = 0; i < n; i++) {
-			for(int j = i + 1; j < n; j++)
-				if(Math.random() < probabilidad)
-					grafo.setArista(i, j);
-		}
-	}
-
+public abstract class Generador {
+	
+	protected GrafoNDNP grafo;
+	protected int orden;
+	
 	public void procesarSalida(String path) {
 		orden = grafo.getCantNodos();
 		int aristas = grafo.cantidadAristas();
 		int minGrado = grafo.getGradoDeUnNodo(0);
 		int maxGrado = grafo.getGradoDeUnNodo(0);
-		double perc = (double) grafo.cantidadAristas() * 100 / grafo.getMaxAristas();
+		double perc = (double) grafo.cantidadAristas() * 100/grafo.getMaxAristas();
 		for(int i = 1; i < orden; i++) {
 			int aux = grafo.getGradoDeUnNodo(i);
 			if(aux < minGrado)
@@ -40,8 +32,7 @@ public class GeneradorProbabilidad {
 						salida.println(i + " " + j);
 			salida.close();
 		} catch (Exception e) {
-			e.printStackTrace();
+			System.out.println("Error al generar el archivo");
 		}
 	}
-	
 }
